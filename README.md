@@ -5,7 +5,7 @@
 1，windows机器安装windows版本的docker ，并下载最新版本的golang镜像 docker pull golang 。  
 2，启动windows golang docker后，对Vscode insider版本安装Visual Studio Code Remote - Containers 组件。然后通过Vscode查看-命令面板菜单--Remote-containers :Attach to the running container 来登陆选中的golang容器。  
 3，进入golang容器内部，创建git仓库。  
-   (```)
+   ```  
         git config --global user.name "skytalemcc"  
         git config --global user.email "79785200@163.com"  
         ssh-keygen -t rsa -C "79785200@163.com"  
@@ -16,4 +16,4 @@
             git add README.md  
             git commit -m "init to add the contex and check if it works"  
             git push origin master  
-   (```)
+   ```  
