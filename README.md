@@ -9,8 +9,8 @@
         git config --global user.name "skytalemcc"
         git config --global user.email "79785200@163.com"
         ssh-keygen -t rsa -C "79785200@163.com"
-        将/root/.ssh/id_rsa.pub内容添加到github个人账号的ssh keys
-        进入/go/src 目录：
+        将/root/.ssh/id_rsa.pub内容添加到github个人账号的ssh keys，然后执行ssh  -T git@github.com来建立git账户连通性。
+        验证后进入/go/src 目录：
         执行 git init
             git clone https://github.com/skytalemcc/LessonGo.git
             git add README.md
