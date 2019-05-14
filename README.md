@@ -17,3 +17,7 @@
             git commit -m "init to add the contex and check if it works"  
             git push origin master  
    ```  
+### 0.0.2 Golang学习内容
+golang学习指南，学习golang的基本语法。  
+http://tour.studygolang.com/welcome/1  
+计划时间：2019-05-15(Wed) to 2019-05-19(Sun)  
