@@ -18,9 +18,21 @@ make([]T, length, capacity)
 
 这里 len 是数组的长度并且也是切片的初始长度。
 
+切片就像数组的引用
+切片并不存储任何数据，它只是描述了底层数组中的一段。
+更改切片的元素会修改其底层数组中对应的元素。
+与它共享底层数组的切片都会观测到这些修改。
+
+切片拥有 长度 和 容量。
+切片的长度就是它所包含的元素个数。 已经有的。
+切片的容量是从它的第一个元素开始数，到其底层数组元素末尾的个数。可以有的。
+切片 s 的长度和容量可通过表达式 len(s) 和 cap(s) 来获取。
 ***/
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 
@@ -36,7 +48,7 @@ func main() {
 	fmt.Printf("len=%d cap=%d slice=%v\n", len(numbers), cap(numbers), numbers)
 
 	//空(nil)切片 一个切片在未初始化之前默认为 nil，长度为 0
-	//var numbers []int  切片是空的 len=0 cap=0 slice=[]
+	//var numbers []int  切片是空的 len=0 cap=0 slice=[]  nil 切片的长度和容量为 0 且没有底层数组。
 	//创建切片
 	numints := []int{0, 1, 2, 3, 4, 5, 6, 7, 8}
 	fmt.Println(numints[2:5], len(numints), cap(numints))
@@ -47,11 +59,36 @@ func main() {
 	fmt.Println(nums)
 	nums = append(nums, 2, 3, 4) //追加多个新元素
 	fmt.Println(nums)
+
+	//切片可以用内建函数 make 来创建，这也是你创建动态数组的方式。make 函数会分配一个元素为零值的数组并返回一个引用了它的切片
 	numbers1 := make([]int, len(nums), (cap(nums))*2)
 	//创建切片 numbers1 是之前切片的两倍容量
 	copy(numbers1, nums) //拷贝nums到numbers1内容
 	fmt.Printf("len=%d cap=%d slice=%v\n", len(numbers1), cap(numbers1), numbers1)
 
+	//切片文法 切片文法类似于没有长度的数组文法。
+	r := []bool{true, false, true, true, false, true}
+	fmt.Println(r)
+	//在进行切片时，你可以利用它的默认行为来忽略上下界。切片下界的默认值为 0，上界则是该切片的长度。
+	//a[0:10]和a[:10] 等价切片
+
+	//切片的切片  切片可包含任何类型，甚至包括其它的切片。
+	// 创建一个井字板（经典游戏）
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
+	// 两个玩家轮流打上 X 和 O
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
+
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " ")) //字符串拼接，更高效
+	}
 }
 
 /***
@@ -63,6 +100,10 @@ len=3 cap=5 slice=[0 0 0]
 [1]
 [1 2 3 4]
 len=4 cap=8 slice=[1 2 3 4]
+[true false true true false true]
+X _ X
+O _ X
+_ _ O
 root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
 
 ***/
