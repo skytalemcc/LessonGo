@@ -7,3 +7,10 @@ func main() {
 
 	fmt.Println("hello world")
 }
+
+/***
+结果集
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run hello.go
+hello world
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+***/

@@ -105,3 +105,22 @@ func main() {
 	}
 	fmt.Println(cm, cm.name, cm.age, cm.address, cm.address.city, cm.address.state)
 }
+
+/***
+结果集：
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run structs.go
+emp1 is  {Sam chan 25 10000}
+emp1 age is  25
+emp2 is  {Thomas Paul 29 20000}
+emp3 is  {Andreah Nikola 31 30000}
+emp4 is  {  0 0}
+emp4 is  {Barry  0 0}
+First Name: Sam
+Age: 55
+First Name: Sam
+Age: 55
+{Naveen 50} Naveen 50
+{Yahoo 30 {Chicago Illinois}} Yahoo 30 {Chicago Illinois} Chicago Illinois
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+
+***/

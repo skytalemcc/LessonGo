@@ -40,3 +40,13 @@ func main() {
 		pow(3, 3, 20),
 	)
 }
+
+/***
+结果集:
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run if.go
+1.4142135623730951 2i
+27 >= 20
+9 20
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+
+***/

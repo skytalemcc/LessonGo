@@ -38,3 +38,14 @@ func main() {
 	fmt.Println(a, b)
 	fmt.Println(swap2("hello", "world"))
 }
+
+/***
+结果集：
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run function.go
+7
+5 6
+world hello
+hello world
+world hello
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+***/

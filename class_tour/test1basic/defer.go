@@ -31,3 +31,24 @@ func main() {
 	defer fmt.Println("world") //在最下面的defer后出。
 	fmt.Println("hello")
 }
+
+/***
+结果集:
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run defer.go
+counting:
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+hello
+world
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+
+
+***/

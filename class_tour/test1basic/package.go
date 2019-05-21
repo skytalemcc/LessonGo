@@ -19,3 +19,13 @@ func main() {
 	fmt.Printf("Now you have %g problem \n", math.Nextafter(2, 3))
 	fmt.Println(math.Pi) // Pi是首字母大写,pi则无法引用
 }
+
+/***
+结果集：
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run package.go
+My favorite number is  1
+Now you have 2.0000000000000004 problem
+3.141592653589793
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+
+***/

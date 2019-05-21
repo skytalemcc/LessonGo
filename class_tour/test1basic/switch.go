@@ -43,3 +43,13 @@ func main() {
 	}
 
 }
+
+/***
+结果集：
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run switch.go
+Go runs on Linux.
+num is greater than 51 and less than 100
+num is greater than 100
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+
+***/

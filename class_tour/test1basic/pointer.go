@@ -28,3 +28,14 @@ func main() {
 	fmt.Println(j) //指针p的值是j的地址，*p改变了j的值。
 
 }
+
+/***
+结果集:
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run pointer.go
+address of p is  0xc000074010
+value of p is  42
+43
+2
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+
+***/

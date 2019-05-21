@@ -47,3 +47,17 @@ func main() {
 	fmt.Printf("%T,%T\n", g, v)
 	fmt.Println(Pi)
 }
+
+/***
+结果集：
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run types.go
+bool(false)
+uint64(18446744073709551615)
+complex128((2+3i))
+0 0 false ""
+42 42
+int,int
+3.14
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+
+***/

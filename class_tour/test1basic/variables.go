@@ -18,3 +18,13 @@ func main() {
 	var q, p, o = true, false, 2      //如果初始化是使用表达式，则可以省略类型；变量从初始值中获得类型。
 	fmt.Printf("%T %T %T\n", q, p, o) //Printf 格式化输出，%T代表打印变量的类型。
 }
+
+/***
+结果集：
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run variables.go
+0 false false false 3
+1 2
+bool bool int
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
+
+***/

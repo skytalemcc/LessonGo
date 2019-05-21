@@ -4,7 +4,10 @@ package main
 Go语言中 只有一种循环结构 for 循环
 基本的 for 循环除了没有了 `( )` 之外 而 `{ }` 是必须的。 没有小括号，大括号是必须的。
 ***/
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	sum := 0
@@ -19,7 +22,18 @@ func main() {
 	fmt.Println(sum)
 	//怎么来使用死循环 如果省略了循环条件，循环就不会结束，因此可以用更简洁地形式表达死循环。
 	for {
-		fmt.Println("print for ever") //会一直打印下去
+		fmt.Println("print for ever")               //会一直打印下去
+		time.Sleep(time.Duration(20) * time.Second) //20秒sleep时间
 	}
 
 }
+
+/***
+结果集：
+root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run for.go
+45
+1440
+print for ever
+print for ever
+print for ever
+***/
