@@ -18,22 +18,22 @@
             git push origin master  
    ```  
 ### 0.0.2 Golang学习内容
-1
-golang学习指南，学习golang的基本语法。  
+1  
+golang学习指南，学习golang的基本语法。   
 https://tour.go-zh.org/welcome/1  
-计划时间：2019-05-15(Wed) to 2019-05-19(Sun)
-完成时间：2019-05-15(Wed) to 2019-05-23(Thu)
-2
-golang高级特性，学习golang的高级语法。
-https://books.studygolang.com/gopl-zh/ go语言圣经
-https://books.studygolang.com/advanced-go-programming-book/ go语言高级编程
-https://books.studygolang.com/Mastering_Go_ZH_CN/ 
-https://books.studygolang.com/go42/
-https://books.studygolang.com/Go-Blog-In-Action/
-https://books.studygolang.com/The-Golang-Standard-Library-by-Example/
-https://studygolang.com/subject/2  golang系列教程
-https://studygolang.com/subject/1  golang中文翻译组
-https://studygolang.com/subject/3  深入理解golang
-计划时间：2019-05-24(Fri) to 2019-05-27(Mon)
-完成时间：
+计划时间：2019-05-15(Wed) to 2019-05-19(Sun)  
+完成时间：2019-05-15(Wed) to 2019-05-23(Thu)  
+2  
+golang高级特性，学习golang的高级语法。    
+https://books.studygolang.com/gopl-zh/ go语言圣经  
+https://books.studygolang.com/advanced-go-programming-book/ go语言高级编程  
+https://books.studygolang.com/Mastering_Go_ZH_CN/  
+https://books.studygolang.com/go42/  
+https://books.studygolang.com/Go-Blog-In-Action/  
+https://books.studygolang.com/The-Golang-Standard-Library-by-Example/  
+https://studygolang.com/subject/2  golang系列教程  
+https://studygolang.com/subject/1  golang中文翻译组  
+https://studygolang.com/subject/3  深入理解golang  
+计划时间：2019-05-24(Fri) to 2019-05-27(Mon)  
+完成时间：  
 
