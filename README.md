@@ -31,7 +31,7 @@ https://books.studygolang.com/Mastering_Go_ZH_CN/
 https://books.studygolang.com/go42/  
 https://books.studygolang.com/Go-Blog-In-Action/  
 https://books.studygolang.com/The-Golang-Standard-Library-by-Example/  
-https://studygolang.com/subject/2  golang系列教程  
+https://studygolang.com/subject/2  golang系列教程  (完成)  
 https://studygolang.com/subject/1  golang中文翻译组  
 https://studygolang.com/subject/3  深入理解golang  
 计划时间：2019-05-24(Fri) to 2019-05-27(Mon)  
