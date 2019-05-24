@@ -2,6 +2,10 @@ package main
 
 /***
 if 语句除了没有了 `( )` 之外，而 `{ }` 是必须的。小括号不要，大括号必须
+if 是条件语句。if 语句的语法是
+if condition {  //  如果 condition 为真，则执行 { 和 } 之间的代码。
+}
+
 ***/
 
 import (
@@ -39,6 +43,16 @@ func main() {
 		pow(3, 2, 10),
 		pow(3, 3, 20),
 	)
+
+	num := 99
+	if num <= 50 {
+		fmt.Println("number is less than or equal to 50")
+	} else if num >= 51 && num <= 100 { //多分支选择
+		fmt.Println("number is between 51 and 100")
+	} else {
+		fmt.Println("number is greater than 100")
+	}
+
 }
 
 /***
@@ -47,6 +61,7 @@ root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic# go run if.go
 1.4142135623730951 2i
 27 >= 20
 9 20
+number is between 51 and 100
 root@e7939faf8694:/go/src/LessonGo/class_tour/test1basic#
 
 ***/

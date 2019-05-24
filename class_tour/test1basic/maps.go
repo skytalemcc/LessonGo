@@ -1,6 +1,7 @@
 package main
 
 /***
+map 是在 Go 中将值（value）与键（key）关联的内置类型。通过相应的键可以获取到值。
 映射将键映射到值。
 映射的零值为 nil 。nil 映射既没有键，也不能添加键。
 make 函数会返回给定类型的映射，并将其初始化备用。
@@ -28,16 +29,16 @@ func main() {
 
 	var countryCapitalMap map[string]string     //创建map集合，形式声明
 	countryCapitalMap = make(map[string]string) //实际创建，启用内存块
-	countryCapitalMap["France"] = "巴黎"
+	countryCapitalMap["France"] = "巴黎"          //增加元素
 	countryCapitalMap["Italy"] = "罗马"
 	countryCapitalMap["Japan"] = "东京"
 	countryCapitalMap["India "] = "新德里"
 
-	for country := range countryCapitalMap {
+	for country := range countryCapitalMap { //遍历 map 中所有的元素需要用 for range 循环。
 		fmt.Println(country, "首都是", countryCapitalMap[country])
 	}
 
-	//查看元素在集合中是否存在
+	//value, ok := map[key] 查看元素在集合中是否存在
 	capital, ok := countryCapitalMap["American"] /*获取一条元素 。通过双赋值检测某个键是否存在。 如果确定是真实的,则存在,否则不存在 */
 	if ok {
 		fmt.Println("American 的首都是", capital)

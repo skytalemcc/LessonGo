@@ -17,13 +17,13 @@ import "fmt"
 //声明结构体,定义具名结构体变量
 //下面的结构体 Employee 是一个具名结构体（named structure）
 //因为它创建了一个具有名字的结构体类型： Employee 。我们可以定义具名结构体类型的变量。
-type Employee struct {
+type Employee struct { // 命名的结构体（Named Structure）大写
 	firstName, lastName string //相同类型的变量可以合并到一行，用逗号分隔。
 	age, salary         int
 }
 
 //定义一个没有类型名称的结构体，这种结构体叫做匿名结构体（anonymous structures）。
-var employee struct {
+var employee struct { //匿名结构体（Anonymous Structure）小写
 	firstName, lastName string
 	age                 int
 }

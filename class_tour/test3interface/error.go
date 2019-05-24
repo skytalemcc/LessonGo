@@ -29,7 +29,7 @@ func Sqrt(x float64) (float64, error) { //error关键字是接口类型 。可�
 //使用new函数来自定义error返回内容。
 func circleArea(radius float64) (float64, error) {
 	if radius < 0 {
-		return 0, errors.New("Area calculation failed, radius is less than zero")
+		return 0, errors.New("Area calculation failed, radius is less than zero") //使用New来自定义报错。
 		//使用 Errorf 给错误添加更多信息
 		//return 0, fmt.Errorf("Area calculation failed, radius %0.2f is less than zero", radius)
 	}

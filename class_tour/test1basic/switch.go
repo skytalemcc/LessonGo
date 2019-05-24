@@ -30,7 +30,7 @@ func main() {
 	//没有表达式的switch ，则相当于 switch true 这种情况下会将每一个 case 的表达式的求值结果与 true 做比较，如果相等，则执行相应的代码
 	//这一构造使得可以用更清晰的形式来编写长的 if-then-else 链。
 	num := 75
-	switch {
+	switch { //表达式被省略了。
 	case num >= 0 && num <= 50:
 		fmt.Println("num is greater than 0 and less than 50")
 	case num >= 51 && num <= 100:
