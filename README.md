@@ -36,4 +36,5 @@ https://studygolang.com/subject/1  golang中文翻译组
 https://studygolang.com/subject/3  深入理解golang  
 计划时间：2019-05-24(Fri) to 2019-05-27(Mon)  
 完成时间：  
-
+3
+golang库，学习自带库和三方库。  

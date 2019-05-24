@@ -19,7 +19,7 @@ import (
 
 func filewriter(i int, wg *sync.WaitGroup, f3 *os.File) { //协程，每个协程对文件进行写入动作
 
-	newLine := "Start worker  " + strconv.Itoa(i)
+	newLine := "Start worker  " + strconv.Itoa(i) //将int转换为string
 	fmt.Println("Start worker ", i)
 	_, err := fmt.Fprintln(f3, newLine) //将内容写入文件
 	if err != nil {

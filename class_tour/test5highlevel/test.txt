@@ -1,0 +1,28 @@
+Hello World
+hello worlde
+Welcome to the world of Go1.
+Go is a compiled language.
+It is easy to learn Go.
+File handling is easy.
+Start worker  9
+Start worker  0
+Start worker  1
+Start worker  2
+Start worker  3
+Start worker  4
+Start worker  5
+Start worker  6
+Start worker  7
+Start worker  8
+Close the worker  2
+Close the worker  9
+Close the worker  0
+Close the worker  1
+Close the worker  4
+Close the worker  3
+Close the worker  5
+Close the worker  6
+Close the worker  8
+Close the worker  7
+Close the file write
+File appended successfully
