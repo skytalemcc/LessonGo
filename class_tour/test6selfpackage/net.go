@@ -34,7 +34,7 @@ func curl() {
 
 //搭建一个web service使用自建库
 func webservice() {
-	http.HandleFunc("/", handler)              // 每一个请求都会发给handler来进行业务处理
+	http.HandleFunc("/", handler) // 每一个请求都会发给handler来进行业务处理
 	// http.HandleFunc("/count", count) 可以添加别的请求，根据请求的url不同会调用不同的函数
 	http.ListenAndServe("localhost:8000", nil) //启动服务，占用端口
 
@@ -73,7 +73,7 @@ The context of fetching are URL.Path = "/hello"
 The context of fetching are URL.Path = "/hello"
 ^Z
 [1]+  Stopped                 go run net.go http://localhost:8000/hello
-root@e7939faf8694:/go/src/LessonGo/class_tour/test6selfpackage# 
+root@e7939faf8694:/go/src/LessonGo/class_tour/test6selfpackage#
 
 
 ***/
