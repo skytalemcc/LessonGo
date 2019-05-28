@@ -3,7 +3,7 @@ package main
 /*
 time包提供了时间的显示和测量用的函数。日历的计算采用的是公历。
 时间可分为时间点与时间段：时间点(Time) 和时间段(Duration)
-满足特定业务：时区(Location) ，Ticker ，Timer(定时器)
+满足特定业务：时区(Location) ，Ticker(周期性定时器) ，Timer(一次性定时器)
 */
 import (
 	"fmt"
