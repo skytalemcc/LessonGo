@@ -43,10 +43,22 @@ http://c.biancheng.net/golang/  Golang入门教程-非常详细
 完成时间: 2019-05-24(Fri) 目前暂停  
 3  
 golang库，学习自带库和三方库。  
+https://studygolang.com/pkgdoc  
+https://devdocs.io/go/  
 计划时间：2019-05-28(Tue) to 2019-06-02(Sun)  
+完成时间: 2019-05-28(Tue) to 2019-06-04(Tue) 目前暂停   
 4  
 golang web框架学习，gin框架。  
+https://gin-gonic.com/zh-cn/docs/  
+https://godoc.org/github.com/gin-gonic/gin  
+https://github.com/gin-gonic/gin  
+计划时间：2019-06-05(Tue) to 2019-06-09(Sun)  
+完成时间:  
 5  
 golang 微服务框架学习，go-micro框架。  
+https://github.com/micro/go-micro  
+https://micro.mu/docs/cn/index.html  
+
+
 
 
