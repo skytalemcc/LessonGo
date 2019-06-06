@@ -55,9 +55,12 @@ https://github.com/gin-gonic/gin
 计划时间：2019-06-05(Tue) to 2019-06-09(Sun)  
 完成时间:  
 5  
-golang 微服务框架学习，go-micro框架。  
+golang 微服务框架学习，go-micro框架。以及go-dubbo。    
 https://github.com/micro/go-micro  
-https://micro.mu/docs/cn/index.html  
+https://micro.mu/docs/cn/index.html    
+https://github.com/dubbo/go-for-apache-dubbo  
+  
+
 
 
 
