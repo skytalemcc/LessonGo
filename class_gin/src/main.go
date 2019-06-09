@@ -314,6 +314,157 @@ root@e7939faf8694:/go/src/LessonGo# curl http://127.0.0.1:8080/someJSON
 while(1);["lena","austin","foo"]
 */
 
+//XML/JSON/YAML/ProtoBuf 渲染
+func xmljsonyamlprotobuf() {
+	r := gin.Default()
+
+	// gin.H 是 map[string]interface{} 的一种快捷方式
+	r.GET("/someJSON", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"message": "hey", "status": http.StatusOK})
+	})
+
+	r.GET("/moreJSON", func(c *gin.Context) {
+		// 你也可以使用一个结构体
+		var msg struct {
+			Name    string `json:"user"`
+			Message string
+			Number  int
+		}
+		msg.Name = "Lena"
+		msg.Message = "hey"
+		msg.Number = 123
+		// 注意 msg.Name 在 JSON 中变成了 "user"
+		// 将输出：{"user": "Lena", "Message": "hey", "Number": 123}
+		c.JSON(http.StatusOK, msg)
+	})
+
+	r.GET("/someXML", func(c *gin.Context) {
+		c.XML(http.StatusOK, gin.H{"message": "hey", "status": http.StatusOK})
+	})
+
+	r.GET("/someYAML", func(c *gin.Context) {
+		c.YAML(http.StatusOK, gin.H{"message": "hey", "status": http.StatusOK})
+	})
+
+	/*ProtoBuf 这种需要专门研究
+	r.GET("/someProtoBuf", func(c *gin.Context) {
+		reps := []int64{int64(1), int64(2)}
+		label := "test"
+		// protobuf 的具体定义写在 testdata/protoexample 文件中。
+		data := &Test{
+			Label: &label,
+			Reps:  reps,
+		}
+		// 请注意，数据在响应中变为二进制数据
+		// 将输出被 protoexample.Test protobuf 序列化了的数据
+		c.ProtoBuf(http.StatusOK, data)
+	})
+	*/
+	// 监听并在 0.0.0.0:8080 上启动服务
+	r.Run(":8080")
+
+}
+
+/*
+结果集：
+root@e7939faf8694:/go/src/LessonGo# curl http://127.0.0.1:8080/someJSON
+{"message":"hey","status":200}
+root@e7939faf8694:/go/src/LessonGo# curl http://127.0.0.1:8080/moreJSON
+{"user":"Lena","Message":"hey","Number":123}
+root@e7939faf8694:/go/src/LessonGo# curl http://127.0.0.1:8080/someXML
+<map><message>hey</message><status>200</status></map>root@e7939faf8694:/go/src/LessonGo# curl http://127.0.0.1:8080/someYAML
+message: hey
+status: 200
+root@e7939faf8694:/go/src/LessonGo#
+*/
+
+//上传单个文件
+func singlefileupload() {
+	r := gin.Default()
+	// 为 multipart forms 设置较低的内存限制 (默认是 32 MiB)
+	// r.MaxMultipartMemory = 8 << 20  // 8 MiB
+	r.POST("/upload", func(c *gin.Context) {
+		// 单文件
+		file, _ := c.FormFile("file")
+		log.Println(file.Filename)
+
+		// 上传文件至指定目录
+		c.SaveUploadedFile(file, "/go/src/LessonGo/class_gin/src/")
+
+		c.String(http.StatusOK, fmt.Sprintf("'%s' uploaded!", file.Filename))
+	})
+	r.Run(":8080")
+
+}
+
+/*
+结果集：
+root@e7939faf8694:/go/src/LessonGo/class_gin/src#
+curl -X POST http://localhost:8080/upload  -F "file=@/go/src/LessonGo/LICENSE"   -H "Content-Type: multipart/form-data"
+'LICENSE' uploaded!
+root@e7939faf8694:/go/src/LessonGo/class_gin/src#
+*/
+
+//上传多个文件
+func multiplefilesupload() {
+	r := gin.Default()
+	// 为 multipart forms 设置较低的内存限制 (默认是 32 MiB)
+	// router.MaxMultipartMemory = 8 << 20  // 8 MiB
+	r.POST("/upload", func(c *gin.Context) {
+		// Multipart form
+		form, _ := c.MultipartForm()
+		files := form.File["upload[]"]
+
+		for _, file := range files {
+			log.Println(file.Filename)
+
+			// 上传文件至指定目录
+			c.SaveUploadedFile(file, "/go/src/LessonGo/class_gin/src/") //上传文件到指定的目录
+		}
+		c.String(http.StatusOK, fmt.Sprintf("%d files uploaded!", len(files)))
+	})
+	r.Run(":8080")
+
+}
+
+/*
+结果集：
+root@e7939faf8694:/go#
+curl -X POST http://localhost:8080/upload  -F "upload[]=@/go/1.txt"  -F "upload[]=@/go/2.txt"   -H "Content-Type: multipart/form-data"
+2 files uploaded
+
+[GIN] 2019/06/09 - 14:30:20 | 200 |      1.2997ms |       127.0.0.1 | POST     /upload
+2019/06/09 14:30:22 1.txt
+2019/06/09 14:30:22 2.txt
+*/
+
+//不使用默认的中间件
+//使用r := gin.New() 代替 r := gin.Default()  Default 使用 Logger 和 Recovery 中间件
+
+//从 reader 读取数据
+func servingdatafromreader() {
+	r := gin.Default()
+	r.GET("/someDataFromReader", func(c *gin.Context) {
+		response, err := http.Get("http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code=000001&per=3")
+		if err != nil || response.StatusCode != http.StatusOK {
+			c.Status(http.StatusServiceUnavailable)
+			return
+		}
+
+		reader := response.Body
+		contentLength := response.ContentLength
+		contentType := response.Header.Get("Content-Type")
+
+		extraHeaders := map[string]string{
+			"Content-Disposition": `attachment; filename="gopher.png"`,
+		}
+
+		c.DataFromReader(http.StatusOK, contentLength, contentType, reader, extraHeaders) //会把整个抓取的内容全部打印出来。
+	})
+	r.Run(":8080")
+
+}
+
 func main() {
 	//go basic()
 	//go loadtmpl()
@@ -325,5 +476,9 @@ func main() {
 	//go formpost()
 	//go post_table()
 	//go pureJson()
-	securejson()
+	//go securejson()
+	//go xmljsonyamlprotobuf()
+	//go singlefileupload()
+	//go multiplefilesupload()
+	servingdatafromreader()
 }
