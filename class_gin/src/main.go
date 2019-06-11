@@ -165,6 +165,12 @@ func http2push() {
 
 	// 监听并在 https://127.0.0.1:8080 上启动服务 如果需要https访问，要声明公私钥
 	//r.RunTLS(":8080", "./testdata/server.pem", "./testdata/server.key")
+	/*
+		HTTPS配置步骤:
+		首先在阿里云搞定ICP域名备案
+		添加一个子域名
+		给子域名申请免费 SSL 证书, 然后下载证书对应的 pem 和 key 文件.
+	*/
 	r.Run(":8080") //在开放互联网上HTTP 2.0将只用于https://网址，而 http://网址将继续使用HTTP/1
 }
 
@@ -1439,6 +1445,116 @@ r.GET("/test2", func(c *gin.Context) {
 })
 */
 
+//提供静态文件服务
+func servingstaticfiles() {
+
+	r := gin.Default()
+	r.Static("/assets", "/go/src/LessonGo/class_gin/src/templates/static") //逻辑名称 对应实际名称
+	r.StaticFS("/more_static", http.Dir("/go/src/LessonGo/class_gin/src/templates/static"))
+	r.StaticFile("/app.js", "/go/src/LessonGo/class_gin/src/templates/static/app.js")
+	// 监听并在 0.0.0.0:8080 上启动服务
+	r.Run(":8080")
+}
+
+/*
+结果集:
+root@e7939faf8694:/go/src/LessonGo# curl http://127.0.0.1:8080/assets
+<a href="/assets/">Moved Permanently</a>.
+
+root@e7939faf8694:/go/src/LessonGo# curl http://127.0.0.1:8080/more_static
+<a href="/more_static/">Moved Permanently</a>.
+
+root@e7939faf8694:/go/src/LessonGo# curl http://127.0.0.1:8080/app.js
+root@e7939faf8694:/go/src/LessonGo#
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] redirecting request 301: /assets --> /assets/
+[GIN-debug] redirecting request 301: /more_static --> /more_static/
+[GIN] 2019/06/11 - 01:06:44 | 200 |      8.6593ms |       127.0.0.1 | GET      /app.js
+
+*/
+
+//静态资源嵌入
+// loadTemplate 加载由 go-assets-builder 嵌入的模板
+/*
+func loadTemplate() (*template.Template, error) {
+	t := template.New("")
+	for name, file := range Assets.Files {
+		if file.IsDir() || !strings.HasSuffix(name, ".tmpl") {
+			continue
+		}
+		h, err := ioutil.ReadAll(file)
+		if err != nil {
+			return nil, err
+		}
+		t, err = t.New(name).Parse(string(h))
+		if err != nil {
+			return nil, err
+		}
+	}
+	return t, nil
+}
+
+func bindsinglebinarywithtemplate() {
+	r := gin.New()
+
+	t, err := loadTemplate()
+	if err != nil {
+		panic(err)
+	}
+	r.SetHTMLTemplate(t)
+
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "/go/src/LessonGo/class_gin/src/templates/index.tmpl", nil)
+	})
+	r.Run(":8080")
+
+}
+请参阅 examples/assets-in-binary 目录中的完整示例。
+
+*/
+
+/*
+怎么样编写测试用例:
+怎样编写 Gin 的测试用例
+HTTP 测试首选 net/http/httptest 包。
+package main
+
+func setupRouter() *gin.Engine {
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.String(200, "pong")
+	})
+	return r
+}
+
+func main() {
+	r := setupRouter()
+	r.Run(":8080")
+}
+
+上面这段代码的测试用例：
+package main
+
+import (
+	"net/http"
+	"net/http/httptest"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
+
+func TestPingRoute(t *testing.T) {
+	router := setupRouter()
+
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest("GET", "/ping", nil)
+	router.ServeHTTP(w, req)
+
+	assert.Equal(t, 200, w.Code)
+	assert.Equal(t, "pong", w.Body.String())
+}
+*/
+
 func main() {
 	//go basic()
 	//go loadtmpl()
@@ -1476,5 +1592,6 @@ func main() {
 	//go cookie()
 	//go paraminpath()
 	//go groupingroutes()
-	runmultipleservice()
+	//go runmultipleservice()
+	//go servingstaticfiles()
 }
